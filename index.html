@@ -1,0 +1,2097 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta content="width=device-width, initial-scale=1.0" name="viewport">
+
+  <title>GENOMICSTAR</title>
+  <meta content="" name="description">
+  <meta content="" name="keywords">
+
+  <!-- Favicons -->
+  <link href="assets/img/favicon1.png" rel="icon">
+  <link href="assets/img/apple-touch-icon.png" rel="apple-touch-icon">
+
+  <!-- Google Fonts -->
+  <link
+    href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Raleway:300,300i,400,400i,500,500i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i"
+    rel="stylesheet">
+  <link rel=”stylesheet” href=”https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css”>
+  <!-- Vendor CSS Files -->
+  <link href="assets/vendor/animate.css/animate.min.css" rel="stylesheet">
+  <link href="assets/vendor/aos/aos.css" rel="stylesheet">
+  <link href="assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+  <link href="assets/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
+  <link href="assets/vendor/boxicons/css/boxicons.min.css" rel="stylesheet">
+  <link href="assets/vendor/glightbox/css/glightbox.min.css" rel="stylesheet">
+  <link href="assets/vendor/remixicon/remixicon.css" rel="stylesheet">
+  <link href="assets/vendor/swiper/swiper-bundle.min.css" rel="stylesheet">
+  <!-- <link href="https://fonts.cdnfonts.com/css/charlotte-3" rel="stylesheet"> -->
+
+  <!-- Template Main CSS File -->
+  <link href="assets/css/style.css" rel="stylesheet">
+  <style>
+    @import url('https://fonts.cdnfonts.com/css/charlotte-3');
+  </style>
+
+  <script src="https://apis.google.com/js/platform.js" async defer></script>
+
+  <meta name="google-signin-client_id" content="YOUR_CLIENT_ID.apps.googleusercontent.com">
+
+
+  <script type="text/javascript">
+
+
+    var POST_URL = "https://getk8f3mo1.execute-api.us-east-1.amazonaws.com/default/contact_api";
+
+    function submitForm(event) {
+
+      event.preventDefault();
+
+      var params = {
+        name: document.forms["contactform"]["name"].value,
+        email: document.forms["contactform"]["email"].value,
+        subject: document.forms["contactform"]["subject"].value,
+        message: document.forms["contactform"]["message"].value
+      }
+
+
+      const http = new XMLHttpRequest()
+      http.open('POST', POST_URL)
+      http.setRequestHeader('Content-type', 'application/json')
+      http.send(JSON.stringify(params)) // Make sure to stringify
+      http.onload = function () {
+        if (http.status == 200) {
+          const errorMsg = document.querySelector(".error-message");
+          const successMsg = document.querySelector(".sent-message");
+          errorMsg.style.display = "none";
+          successMsg.style.display = "block";
+          clearForm();
+          setTimeout(() => {
+            successMsg.style.display = "none";
+          }, "3000");
+
+        } else {
+          const errorMsg = document.querySelector(".error-message");
+          const successMsg = document.querySelector(".sent-message");
+          errorMsg.style.display = "block";
+          successMsg.style.display = "none";
+
+        }
+
+      }
+
+
+    }
+
+
+    function clearForm() {
+      document.forms["contactform"]["name"].value = '';
+      document.forms["contactform"]["email"].value = '';
+      document.forms["contactform"]["subject"].value = '';
+      document.forms["contactform"]["message"].value = '';
+    }
+
+
+  </script>
+
+
+</head>
+
+<body>
+
+
+  <!-- ======= Header ======= -->
+  <header id="header" class="fixed-top d-flex align-items-center ">
+    <div class="container d-flex align-items-center justify-content-between">
+
+      <!--   <h1 class="logo"><a href="index.html">Anyar</a></h1> -->
+      <!-- Uncomment below if you prefer to use an image logo -->
+      <a href="#" class="logo"><img src="assets/img/GS_Home_logo.png" alt="" class="img-fluid"></a>
+
+      <nav id="navbar" class="navbar">
+        <ul>
+          <li><a class="nav-link scrollto active" href="#hero">Home</a></li>
+          <li><a class="nav-link scrollto" href="#icon-boxes">About Us</a></li>
+          <li><a class="nav-link scrollto" href="#solution">Our Platform</a></li>
+          <li><a class="nav-link scrollto" href="#team">Our Team</a></li>
+          <li><a class="nav-link scrollto" href="#faq1">FAQ</a></li>
+          <!--    <li><a class="nav-link scrollto " href="#portfolio">Process Flow</a></li> -->
+
+          <li><a class="nav-link scrollto" href="#contact">Contact Us</a></li>
+
+          <div style="margin-left: 10px;">
+            <!-- Button trigger modal -->
+            <button type="button" class="btn btn-primary btn-login" data-toggle="modal" onclick="clearLoginForm()"
+              data-target="#loginModal">
+              Login
+            </button>
+
+          </div>
+
+        </ul>
+        <i class="bi bi-list mobile-nav-toggle"></i>
+
+      </nav><!-- .navbar -->
+
+    </div>
+  </header><!-- End Header -->
+
+  <!-- ======= Hero Section ======= -->
+  <section id="precision">
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-7 col-12">
+          <h1 class="precision-title text-center">Precision Medicine for all</h1>
+          <br>
+          <div class="row register-img">
+            <div class="col-lg-12 col-12">
+              <img src="assets/img/Register.png" class="text-center" data-toggle="modal" onclick="clearForm()"
+                data-target="#myRegisterModal">
+            </div>
+            <div class="col-lg-12 register-or">
+              <span class="ror">or</span>
+
+            </div>
+            <div class="col-lg-12 col-12">
+              <a href="tel:9876543210" data-dismiss="modal" data-toggle="modal" data-target="#signUpModal"><img
+                  src="assets/img/Call-Customer.png"></a>
+            </div>
+          </div>
+        </div>
+        <div class="col-lg-5 col-12">
+          <div class=" justify-content-center align-items-center how-it-works">
+            <div>
+              <div class="text-center how-title">
+                <h2 class="title-how">How it works?</h2> <!-- Centered heading -->
+              </div>
+              <ol class="list-group list-group-numbered how">
+                <li class="list-group-item">Doctor prescribes for Genomic testing</li>
+                <li class="list-group-item">Patient registers online OR calls GenomicStar Customer Support</li>
+                <li class="list-group-item">GenomicStar Councillors calls Doctor and decide on the test</li>
+                <li class="list-group-item">Patient provides sample at nearby Clinic and makes payment</li>
+                <li class="list-group-item">GenomicStar conducts tests using worlds best analysis software</li>
+                <li class="list-group-item">Patient collects report from Clinic</li>
+                <li class="list-group-item">Doctor uses report to administer precision medicine</li>
+              </ol>
+            </div>
+            <div class="text-center">
+              <h2 class="faq"><a class="nav-link scrollto" href="#faq1">Genomics FAQs</a></h2>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  <section id="hero">
+    <div class="hero-container">
+      <div id="heroCarousel" class="carousel carousel slide" data-bs-ride="carousel" data-bs-interval="5000">
+
+        <div class="carousel-item carousel-image ban1 active ">
+          <div class="carousel-container">
+            <div class="carousel-content container">
+              <h2 class="animate__animated animate__fadeInDown">Welcome to GenomicStar</h2>
+              <p class="animate__animated animate__fadeInUp">Genomic Analysis Platform for Precision medicine</p>
+
+            </div>
+          </div>
+        </div>
+        <div class="carousel-item carousel-image ban2">
+          <div class="carousel-container">
+            <div class="carousel-content container">
+              <h2 class="animate__animated animate__fadeInDown">Welcome to GenomicStar</h2>
+              <p class="animate__animated animate__fadeInUp">Bringing the power of AI-driven genomic analysis to routine
+                clinical practices</p>
+
+            </div>
+          </div>
+        </div>
+        <!-- Slide 2 -->
+        <div class="carousel-item carousel-image ban3">
+          <div class="carousel-container">
+            <div class="carousel-content container">
+              <h2 class="animate__animated animate__fadeInDown">Welcome to GenomicStar</h2>
+              <p class="animate__animated animate__fadeInUp">Bringing the world's best genomics analysis for patients,
+                at an affordable cost </p>
+
+            </div>
+          </div>
+        </div>
+
+        <!-- Slide 3 -->
+        <div class="carousel-item carousel-image ban4">
+          <div class="carousel-container">
+            <div class="carousel-content container">
+              <h2 class="animate__animated animate__fadeInDown">Welcome to GenomicStar</h2>
+              <p class="animate__animated animate__fadeInUp">Providing an end-to-end genomic analysis platform for
+                hospitals and labs</p>
+
+            </div>
+          </div>
+        </div>
+
+      </div>
+
+      <a class="carousel-control-prev" href="#heroCarousel" role="button" data-bs-slide="prev">
+        <span class="carousel-control-prev-icon bi bi-chevron-left" aria-hidden="true"></span>
+      </a>
+      <a class="carousel-control-next" href="#heroCarousel" role="button" data-bs-slide="next">
+        <span class="carousel-control-next-icon bi bi-chevron-right" aria-hidden="true"></span>
+      </a>
+
+    </div>
+    </div>
+  </section><!-- End Hero -->
+
+  <!-- End Icon Boxes Section -->
+
+  <!-- ======= About Us Section ======= -->
+
+
+
+
+
+
+
+  <main id="main">
+
+    <section id="about1" class="about1">
+      <div class="container">
+
+
+        <div class="row justify-content-between align-items-center">
+          <div class="col-lg-5 d-flex align-items-center justify-content-center about-img">
+            <img src="assets/img/199.png" class="img-fluid" alt="" data-aos="zoom-in">
+          </div>
+          <div class="col-lg-6  pt-lg-0">
+            <h4>From genomic data to actionable clinical interventions </h4>
+            <p data-aos="fade-up" data-aos-delay="100" style="color: black;">
+
+              At GenomicStar, we aim to democratize genomics using AI powered precision medicine
+              platform. This is achieved by examining a patient&#39;s genomic profile, identifying the underlying
+              cause, personalizing the therapy, and improving outcomes for their treatment.
+
+            </p>
+            <div class="row ">
+              <div class="col-md-12 head1 " data-aos="fade-up" data-aos-delay="100">
+
+
+                <p>Our vision is to upgrade all labs into genomic testing &amp; analysis facilities, thereby bringing
+                  the
+                  benefits of genomic testing to doctors and patients.</p>
+              </div>
+
+            </div>
+            <div class="row  head" data-aos="fade-up" data-aos-delay="300" style="text-align: center;">
+
+              <!--    <h2>We are fearfully and wonderfully made</h2> -->
+
+            </div>
+            <div class="row last" data-aos="fade-up" data-aos-delay="400" style="text-align: center;">
+
+              <!--   <p>It’s in our DNA. Let’s make use of it!</p> -->
+
+            </div>
+          </div>
+        </div>
+
+
+      </div>
+      <!--     <div class="row st" data-aos="fade-up" data-aos-delay="300" style="text-align: center;" >
+             
+          <h2>We are fearfully and wonderfully made</h2>
+         
+        </div>
+        <div class="row last" data-aos="fade-up" data-aos-delay="400" style="text-align: center;color: #1565c0;">
+   
+          <p>It’s in our DNA. Let’s make use of it!</p>
+
+        </div> -->
+    </section>
+    <!--     <section id="xxx" style="text-align: center;background-color: #ff4a17;">
+     <div class="row" data-aos="fade-up" data-aos-delay="300">
+             
+                <h3>We are fearfully and wonderfully made</h3>
+               
+              </div>
+              <div class="row last" data-aos="fade-up" data-aos-delay="400" style="text-align: center;">
+         
+                <p>It’s in our DNA. Let’s make use of it!</p>
+      
+              </div>
+        </section> -->
+
+
+    <!-- ======= Icon Boxes Section ======= -->
+    <!-- <section id="icon-boxes" class="icon-boxes">
+        <div class="container">
+     <div class="section-title">
+          <h2>About Us</h2>
+         
+        </div>
+          <div class="row">
+            <div class="col-md-6 col-lg-4 d-flex align-items-stretch mb-5 mb-lg-0" data-aos="fade-up">
+              <div class="icon-box">
+                <div class="icon"><i class="bx bxl-dribbble"></i></div>
+                <h4 class="title"><a href="">What is GenomicStar?</a></h4>
+                <p class="description">GenomicStar is a Precision Medicine Platform that will empower Doctors to prescribe for Genome testing and can get guidance for actionable clinical interventions specific to that patient.
+  
+                 <br><br> The Platform streamlines all the processes involved in Genome sequencing by Clinical Labs to Analysis by world’s leading research laboratories and to further interpretation of these reports to actional clinical insights.</p>
+              </div>
+            </div>
+  
+            <div class="col-md-6 col-lg-4 d-flex align-items-stretch mb-5 mb-lg-0" data-aos="fade-up" data-aos-delay="100">
+              <div class="icon-box">
+                <div class="icon"><i class="bx bx-file"></i></div>
+                <h4 class="title"><a href="">What it does?</a></h4>
+                <p class="description">GenomicStar solves the complex problem of implementing genomic medical practise into everyday simple Clinical set-up.
+                  <br><br>Genomic analysis will help Clinicians to pinpoint root-cause of diseases and administer precision medicine making Patients to recover faster and better.
+                </p>
+              </div>
+            </div>
+  
+            <div class="col-md-6 col-lg-4 d-flex align-items-stretch mb-5 mb-lg-0" data-aos="fade-up" data-aos-delay="200">
+              <div class="icon-box">
+                <div class="icon"><i class="bx bx-tachometer"></i></div>
+                <h4 class="title"><a href="">How it does?</a></h4>
+                <p class="description">We do this through a cloud-based genomics platform that simplifies the process from sample collection to DNA sequencing though analysis, variant calling, interpretation and final actionable and insightful report for Doctors.
+                  
+                  <br><br>This is made possible through partnerships with World’s leading Geonomics research organizations and hospitals. In summary, GenomicStar democratizes Genomic medicine.</p>
+              </div>
+            </div>
+  
+          
+            </div>
+  
+          </div>
+  
+        </div>
+      </section> -->
+
+
+    <section id="icon-boxes" class="servicesdup1 section-bg">
+      <div class="container">
+
+        <div class="section-title">
+          <h2>About Us</h2>
+          <p>DEMOCRATIZING GENOMICS</p>
+        </div>
+
+        <div class="row">
+          <div class="col-md-4 d-flex" data-aos="fade-right">
+            <div class="card">
+              <div class="card-img">
+                <img src="assets/img/21.jpg" alt="...">
+              </div>
+              <div class="card-body">
+                <h5 class="card-title"><a href="">What is GenomicStar?</a></h5>
+                <p class="card-text">GenomicStar is a Precision Medicine Platform that helps doctors solve the problem
+                  of translating complex genomic data into actionable clinical insights for better and faster treatment
+                  of Patients.
+                  .</p>
+
+                <p class="card-text">The platform primarily caters to the end-to-end needs of genomic analysis for
+                  hospitals and
+                  laboratories.</p>
+                <!--    <div class="read-more"><a href="#"><i class="bi bi-arrow-right"></i> Read More</a></div> -->
+              </div>
+            </div>
+          </div>
+          <div class="col-md-4 d-flex" data-aos="fade-left">
+            <div class="card">
+              <div class="card-img">
+                <img src="assets/img/18.jpg" alt="...">
+              </div>
+              <div class="card-body">
+                <h5 class="card-title"><a href="">What Does It Do?</a></h5>
+                <p class="card-text">GenomicStar solves the complex problems associated with implementing genomic
+                  practices, from small doctors’ clinics to multi-specialty hospitals.</p>
+
+                <p class="card-text">The use of advanced AI algorithms will help doctors pinpoint the root causes of
+                  diseases and administer precision medicine. </p>
+
+              </div>
+            </div>
+
+          </div>
+          <div class="col-md-4 d-flex" data-aos="fade-right">
+            <div class="card">
+              <div class="card-img">
+                <img src="assets/img/14.jpg" alt="...">
+              </div>
+              <div class="card-body">
+                <h5 class="card-title"><a href="">How Does It Work?</a></h5>
+                <p class="card-text">We achieve this through our AI powered, cloud-based
+                  genomics platform that simplifies the process of sample
+                  collection, NGS sequencing, variant calling,
+                  interpretation, and the generation of actionable, insightful
+                  reports for doctors.</p>
+
+              </div>
+            </div>
+          </div>
+
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ======= Clients Section ======= -->
+    <!-- <section id="clients" class="clients">
+      <div class="container" data-aos="zoom-in">
+
+        <div class="clients-slider swiper">
+          <div class="swiper-wrapper align-items-center">
+            <div class="swiper-slide"><img src="assets/img/clients/client-1.png" class="img-fluid" alt=""></div>
+            <div class="swiper-slide"><img src="assets/img/clients/client-2.png" class="img-fluid" alt=""></div>
+            <div class="swiper-slide"><img src="assets/img/clients/client-3.png" class="img-fluid" alt=""></div>
+            <div class="swiper-slide"><img src="assets/img/clients/client-4.png" class="img-fluid" alt=""></div>
+            <div class="swiper-slide"><img src="assets/img/clients/client-5.png" class="img-fluid" alt=""></div>
+            <div class="swiper-slide"><img src="assets/img/clients/client-6.png" class="img-fluid" alt=""></div>
+            <div class="swiper-slide"><img src="assets/img/clients/client-7.png" class="img-fluid" alt=""></div>
+            <div class="swiper-slide"><img src="assets/img/clients/client-8.png" class="img-fluid" alt=""></div>
+          </div>
+          <div class="swiper-pagination"></div>
+        </div>
+
+      </div>
+    </section> End Clients Section -->
+
+    <section id="solution" class="about-boxes">
+      <div class="container">
+        <div class="section-title">
+          <h2>OUR PLATFORM</h2>
+          <p>GENOMICS ANALYSIS PLATFORM</p>
+
+        </div>
+        <div class="row align-items-center">
+          <div class="col-lg-6 order-2 order-lg-1 mt-3 mt-lg-0">
+            <img src="assets/img/09.jpg" class="img-fluid" alt="" data-aos="zoom-in">
+          </div>
+          <div class="col-lg-6 order-2 order-lg-1 mt-3 mt-lg-0">
+            <p><!-- <i class="ri-check-double-line" style="color:#ff4a17"></i> -->GenomicStar is a secure cloud
+              environment for genomic analysis workflows and applications.
+              The platform handles end-to-end processes throughout the genomic testing life cycle for all
+              stakeholders, including laboratories/ hospitals, doctors, patients, and service providers.
+            </p>
+            <p><!-- <i class="ri-check-double-line"  style="color:#ff4a17"></i> --> The platform, powered by
+              cutting-edge AI and ML technologies, is primarily used by
+              laboratories/ hospitals to automate and streamline all processes during genomic testing, from
+              sample collection and NGS sequencing to variant calling, interpretation, and the generation of
+              actionable, insightful reports for doctors. Doctors access the platform to review results and add
+              their comments. Patients own and manage their personal data on our secure platform.</p>
+            <!--   <p><i class="ri-check-double-line"  style="color:#ff4a17"></i> Doctors access this platform for reviewing the reports and submitting their observations. Patients own and manage their own data in this secured platform.</p> -->
+          </div>
+
+
+
+        </div>
+
+      </div>
+    </section>
+
+    <section id="features" class="features">
+      <div class="container" data-aos="fade-up">
+        <div class="section-title">
+          <h2>Benefits</h2>
+          <p>ITS ALL ABOUT PATIENT CARE</p>
+        </div>
+        <ul class="nav nav-tabs row d-flex">
+          <li class="nav-item col-4">
+            <a class="nav-link active show" data-bs-toggle="tab" href="#tab-1">
+              <i class="ri-stethoscope-line"></i>
+              <h4 class="d-none d-lg-block">Doctors</h4>
+            </a>
+          </li>
+          <li class="nav-item col-4">
+            <a class="nav-link" data-bs-toggle="tab" href="#tab-2">
+              <i class="ri-user-line"></i>
+
+              <h4 class="d-none d-lg-block">Patients</h4>
+            </a>
+          </li>
+          <li class="nav-item col-4">
+            <a class="nav-link" data-bs-toggle="tab" href="#tab-3">
+              <i class="ri-microscope-line"></i>
+              <h4 class="d-none d-lg-block">Hospitals/Labs</h4>
+            </a>
+          </li>
+
+        </ul>
+
+        <div class="tab-content">
+          <div class="tab-pane active show" id="tab-1">
+            <div class="row  align-items-center">
+              <div class="col-lg-6  order-2 order-lg-1  mt-lg-0">
+                <h3>It's time to take advantage of genomics in routine medical practices</h3>
+
+                <ul>
+
+                  <li style="list-style-type: square;margin-left: 18px;"><span style="font-weight: 700;">Personalized
+                      Treatment Plans:</span> Genomics provides insights into how different patients might respond to
+                    certain treatments based on their genetic makeup</li>
+                  <li style="list-style-type: square;margin-left: 18px;"><span style="font-weight: 700;">Early Detection
+                      and Prevention:</span> By analyzing a patient's genomic data, doctors can identify predispositions
+                    to certain diseases or conditions.</li>
+                  <li style="list-style-type: square;margin-left: 18px;"><span
+                      style="font-weight: 700;">Pharmacogenomics:</span> By understanding a patient's genetic profile,
+                    doctors can prescribe medications that are more likely to be effective and less likely to cause
+                    adverse reactions. </li>
+                  <li style="margin-left: 18px;">All of this can be done in just a few days at a highly affordable cost.
+                  </li>
+                  <li></li>
+                  <li></li>
+                  <li></li>
+                  <li></li>
+                  <li></li>
+                  <li></li>
+                  <li></li>
+                  <li></li>
+
+                  <!--  <li><i class="ri-check-double-line"></i> This information further Analyses the data and suggests actionable insight and possible clinical interventions. All these can be done in just a few days at a highly affordable cost to the Patient. </li> -->
+                </ul>
+
+              </div>
+              <div class="col-lg-6 order-1 order-lg-2 ">
+                <img src="assets/img/benefit1.jpg" alt="" class="img-fluid">
+              </div>
+            </div>
+          </div>
+          <div class="tab-pane " id="tab-2">
+            <div class="row align-items-center">
+              <div class="col-lg-6 order-2 order-lg-1  mt-lg-0">
+                <h3>Precision Medicine helps in faster and efficient treatment</h3>
+                <!--    <p>
+                  Ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate
+                  velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in
+                  culpa qui officia deserunt mollit anim id est laborum
+                </p>
+                <p class="fst-italic">
+                  Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore
+                  magna aliqua.
+                </p> -->
+
+                <!-- <li><i class="ri-check-double-line"></i> Precision medicine helps in faster and efficient treatment</li> -->
+                <!--   <li><i class="ri-check-double-line"></i>A simple blood or saliva test can help determine:</li> -->
+                <ul>
+                  <li style="list-style-type: square;margin-left: 18px;"><span style="font-weight: 700;">Expedited
+                      Treatment:</span> Genomic analysis allows patients to receive timely care, reducing the wait times
+                    often associated with conventional diagnostic methods.</li>
+                  <li style="list-style-type: square;margin-left: 18px;"><span style="font-weight: 700;">Pinpoint
+                      Diagnosis & Targeted Care:</span> Through genomic analysis, diseases can be identified with
+                    unparalleled precision, leading to highly specific and effective clinical interventions.</li>
+                  <li style="list-style-type: square;margin-left: 18px;"><span style="font-weight: 700;">Optimal
+                      Medication & Dosage:</span> Patients benefit from tailored drug prescriptions, ensuring they
+                    receive the most suitable medication at the right dose, minimizing potential adverse reactions.</li>
+                  <li style="list-style-type: square;margin-left: 18px;"><span style="font-weight: 700;">Cost-Efficient
+                      Care:</span> Leveraging genomics can result in a more economical treatment journey, often proving
+                    more cost-effective than traditional medical approaches.</li>
+                  <li></li>
+                  <li></li>
+                  <li></li>
+                  <li></li>
+
+
+                </ul>
+                <!--   </ul>
+                  <li><i class="ri-check-double-line"></i>The results help Doctors to tailor a Patients medication based on the genes for now and for future prescription needs.</li>
+                   <li><i class="ri-check-double-line"></i>The tests looks for changes or variants in one or more genes that can determine the medication that’s best fit for the Patient.</li>
+                  <li><i class="ri-check-double-line"></i>The results help Doctors to tailor a Patients medication based on the genes now and for future prescription needs.</li> 
+                </ul> -->
+              </div>
+              <div class="col-lg-6 order-1 order-lg-2 text-center">
+                <img src="assets/img/11.jpg" alt="" class="img-fluid">
+              </div>
+            </div>
+          </div>
+          <div class="tab-pane" id="tab-3">
+            <div class="row align-items-center">
+              <div class="col-lg-6 order-2 order-lg-1  mt-lg-0">
+                <h3>Genomic testing opportunity is knocking at the doors of Labs. Take advantage of it </h3>
+                <!--      <p>
+                  Ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate
+                  velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in
+                  culpa qui officia deserunt mollit anim id est laborum
+                </p> -->
+                <ul>
+                  <!--  <li><i class="ri-check-double-line"></i> Genomic testing opportunity is knocking at Clinic’s door</li> -->
+                  <li style="list-style-type: square;margin-left: 18px;"><span style="font-weight: 700;">
+                      Specialized Expertise:</span>
+                    The entire process of genomic testing is deeply rooted in advanced computing and AI technology,
+                    necessitating specialized knowledge for its effective management.
+                  </li>
+                  <li style="list-style-type: square;margin-left: 18px;"><span style="font-weight: 700;">Genomic Data
+                      Processing:</span> Genomic datasets are extensive, often spanning from a few to even hundreds of
+                    gigabytes. This raw data undergoes numerous stages of refinement to convert it into actionable
+                    insights. </li>
+                  <li style="list-style-type: square;margin-left: 18px;"><span style="font-weight: 700;">Precision in
+                      Data Handling:</span> Data processing requires accuracy and precision, which are achieved through
+                    robust cloud computation.</li>
+
+                  <li style="list-style-type: square;margin-left: 18px;"><span style="font-weight: 700;">Upholding Data
+                      Integrity and Confidentiality:</span> Data security, backup, and more importantly, data privacy is
+                    also essential. </li>
+                  <li style="margin-left: 18px;">All of the above can be managed by GenomicStar platform</li>
+                </ul>
+                <!--     <p class="fst-italic">
+                  Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore
+                  magna aliqua.
+                </p> -->
+              </div>
+              <div class="col-lg-6 order-1 order-lg-2 text-center">
+                <img src="assets/img/benefit3.jpg" alt="" class="img-fluid">
+              </div>
+            </div>
+          </div>
+
+        </div>
+
+      </div>
+    </section>
+
+
+
+
+
+
+
+    <section id="servicesdup" class="servicesdup section-bg">
+      <div class="container">
+
+        <div class="section-title">
+          <h2>Functionality</h2>
+          <p>Platform Capabilities</p>
+
+        </div>
+
+        <div class="row">
+          <div class="col-lg-6 col-md-6" data-aos="fade-up">
+            <div class="icon-box">
+              <!--  <div class="icon"><i class="bi bi-1"></i></div> -->
+              <div class="icon numberCircle"><i>1</i></div>
+              <h4 class="title"><a href="">Genomic testing life-cycle management</a></h4>
+              <!--  <p class="description">Genomic Testing life-cycle management</p> -->
+            </div>
+          </div>
+          <div class="col-lg-6 col-md-6" data-aos="fade-up" data-aos-delay="100">
+            <div class="icon-box">
+              <div class="icon numberCircle"><i>2</i></div>
+              <div>
+                <h4 class="title"><a href="">Integration with sequencing machines</a></h4>
+              </div>
+              <!--  <p class="description">Integration with Sequencing machines</p> -->
+            </div>
+          </div>
+          <div class="col-lg-6 col-md-6" data-aos="fade-up" data-aos-delay="200">
+            <div class="icon-box">
+              <div class="icon numberCircle"><i>3</i></div>
+              <h4 class="title"><a href="">LMS features, local data management and transfer to cloud</a></h4>
+
+            </div>
+          </div>
+          <div class="col-lg-6 col-md-6" data-aos="fade-up" data-aos-delay="300">
+            <div class="icon-box">
+              <div class="icon numberCircle"><i>4</i></div>
+              <h4 class="title"><a href="">Wide range of analysis options for a disease type</a></h4>
+
+            </div>
+          </div>
+          <div class="col-lg-6 col-md-6" data-aos="fade-up" data-aos-delay="400">
+            <div class="icon-box">
+              <div class="icon numberCircle"><i>5</i></div>
+              <h4 class="title"><a href="">Workflows and ready to run pipelines</a></h4>
+
+            </div>
+          </div>
+          <div class="col-lg-6 col-md-6" data-aos="fade-up" data-aos-delay="500">
+            <div class="icon-box">
+              <div class="icon numberCircle"><i>6</i></div>
+              <h4 class="title"><a href="">AI powered secondary &amp; tertiary analysis and reporting</a></h4>
+
+            </div>
+          </div>
+          <div class="col-lg-6 col-md-6" data-aos="fade-up" data-aos-delay="500">
+            <div class="icon-box">
+              <div class="icon numberCircle"><i>7</i></div>
+              <h4 class="title"><a href="">Optimal use of compute and processing power during analysis</a></h4>
+
+            </div>
+          </div>
+          <div class="col-lg-6 col-md-6" data-aos="fade-up" data-aos-delay="500">
+            <div class="icon-box">
+              <div class="icon numberCircle"><i>8</i></div>
+              <h4 class="title"><a href="">Access control for doctors and patients</a></h4>
+
+            </div>
+          </div>
+          <div class="col-lg-6 col-md-6" data-aos="fade-up" data-aos-delay="500">
+            <div class="icon-box">
+              <div class="icon numberCircle"><i>9</i></div>
+              <h4 class="title"><a href="">Cost-effective and secure data storage and retrieval</a></h4>
+
+            </div>
+          </div>
+          <div class="col-lg-6 col-md-6" data-aos="fade-up" data-aos-delay="500">
+            <div class="icon-box">
+              <div class="icon numberCircle"><i>10</i></div>
+              <h4 class="title"><a href="">Compliance with industry standards for privacy and security
+                </a></h4>
+
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <section id="faq" class="faq " style="margin-top: 0px;background-color: rgb(219, 230, 240);">
+      <div class="container" data-aos="fade-up">
+        <div class="section-title">
+          <h2>Process Flow</h2>
+          <p>Optimized for faster cure</p>
+
+        </div>
+
+        <!-- 
+          <div class="faq-list icon-box">
+            <img src="assets/img/Picture1.png" class="img-fluid" alt="">
+            </div> -->
+
+        <!--  <div class="row" data-aos="zoom-in">
+              <div class="col-lg-1 order-2 order-lg-1 mt-3 mt-lg-0">
+                </div>
+                <div class="col-lg-2 order-2 order-lg-1 mt-3 mt-lg-0">
+                  <img src="assets/img/row1.png" class="img-fluid" alt="">
+              </div>
+              <div class="col-lg-2 order-2 order-lg-1 mt-3 mt-lg-0">
+                <img src="assets/img/row2.png" class="img-fluid" alt="">
+                </div>
+                <div class="col-lg-2 order-2 order-lg-1 mt-3 mt-lg-0">
+                  <img src="assets/img/row1.png" class="img-fluid" alt="">
+                  </div>
+                  <div class="col-lg-2 order-2 order-lg-1 mt-3 mt-lg-0">
+                    <img src="assets/img/row2.png" class="img-fluid" alt="">
+                    </div>
+                    <div class="col-lg-2 order-2 order-lg-1 mt-3 mt-lg-0">
+                      <img src="assets/img/row1.png" class="img-fluid" alt="">
+                      </div>
+                      <div class="col-lg-1 order-2 order-lg-1 mt-3 mt-lg-0">
+                       
+                      </div>
+            </div> -->
+        <div class="row hd " data-aos="zoom-in" style="margin-top: 10px;">
+          <div class="col-lg-1 order-2 order-lg-1 mt-3 mt-lg-0">
+
+          </div>
+          <div class="col-lg-2 order-2 order-lg-1 mt-3 mt-lg-0" style="background-color: #d9e2e9;">
+
+            <div class="row " style="margin-bottom: 7px;">
+              <img src="assets/img/rown1.png" class="img-fluid" alt="">
+            </div>
+            <div>
+              <div class="row " style="margin-top: 5px;">
+                <div style="text-align: center;">
+                  <img src="assets/img/rowhd1.png" class="img-fluid" alt="">
+                </div>
+
+              </div>
+              <div class="row " style="margin-top: 5px;">
+                <div>
+                  <ul>
+                    <li style="list-style-type: square;font-size: 14px;">Test selection and determination
+                      of methodologies
+                      </i>
+                    <li style="list-style-type: square;font-size: 14px;">Sample preparation, extraction,
+                      and quality assessment
+                      </i>
+                    <li style="list-style-type: square;font-size: 14px;">Transfer of raw sequencing
+                      data to cloud
+                      </i>
+
+                  </ul>
+                </div>
+
+              </div>
+            </div>
+          </div>
+          <div class="col-lg-2 order-2 order-lg-1 mt-3 mt-lg-0">
+            <div class="row " style="margin-bottom: 7px;">
+              <img src="assets/img/rown2.png" class="img-fluid" alt="">
+            </div>
+            <div>
+              <div class="row ">
+                <div style="text-align: center;">
+                  <img src="assets/img/rowhd2.png" class="img-fluid" alt="">
+                </div>
+
+              </div>
+              <div class="row " style="margin-top: 5px;">
+                <div>
+                  <ul>
+                    <li style="list-style-type: square;font-size: 14px;">Quality control to ensure
+                      data integrity
+                      </i>
+                    <li style="list-style-type: square;font-size: 14px;">Read alignment
+                      for accurate mapping
+                      </i>
+                    <li style="list-style-type: square;font-size: 14px;">Workflow selection based on
+                      specific genomic applications
+                      </i>
+
+                  </ul>
+                </div>
+
+              </div>
+            </div>
+          </div>
+          <div class="col-lg-2 order-2 order-lg-1 mt-3 mt-lg-0" style="background-color: #d9e2e9;">
+            <div class="row " style="margin-bottom: 7px;">
+              <img src="assets/img/rown3.png" class="img-fluid" alt="">
+            </div>
+            <div>
+              <div class="row ">
+                <div style="text-align: center;">
+                  <img src="assets/img/rowhd3.png" class="img-fluid" alt="">
+                </div>
+
+              </div>
+              <div class="row " style="margin-top: 5px;">
+                <div>
+                  <ul>
+                    <li style="list-style-type: square;font-size: 14px;">Rigorous filtering to retain
+                      only high-quality reads
+                      </i>
+                    <li style="list-style-type: square;font-size: 14px;">Mapping and alignment
+                      for precise genomic positioning
+                      </i>
+                    <li style="list-style-type: square;font-size: 14px;">Variant calling to identify SNPs
+                      and other mutations
+                      </i>
+
+                  </ul>
+                </div>
+
+              </div>
+            </div>
+          </div>
+          <div class="col-lg-2 order-2 order-lg-1 mt-3 mt-lg-0">
+            <div class="row " style="margin-bottom: 7px;">
+              <img src="assets/img/rown4.png" class="img-fluid" alt="">
+            </div>
+            <div>
+              <div class="row ">
+                <div style="text-align: center;">
+                  <img src="assets/img/rowhd4.png" class="img-fluid" alt="">
+                </div>
+
+              </div>
+              <div class="row d-flex" style="margin-top: 5px;">
+                <div>
+                  <ul>
+                    <li style="list-style-type: square;font-size: 14px;">Annotation Filtering & prioritization</i>
+                    <li style="list-style-type: square;font-size: 14px;">Variant classification & interpretation</i>
+                    <li style="list-style-type: square;font-size: 14px;">Validation & annotation</i>
+                    <li style="list-style-type: square;font-size: 14px;">Report generation</i>
+
+                  </ul>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="col-lg-2 order-2 order-lg-1 mt-3 mt-lg-0 " style="background-color: #d9e2e9;">
+            <div class="row" style="margin-bottom: 7px;">
+              <img src="assets/img/rown5.png" class="img-fluid" alt="">
+            </div>
+            <div>
+              <div class="row " style="margin-top: 5px;">
+                <div style="text-align: center;">
+                  <img src="assets/img/rowhd5.png" class="img-fluid" alt="">
+                </div>
+
+              </div>
+              <div class="row d-flex" style="margin-top: 5px;">
+                <div>
+                  <ul>
+                    <li style="list-style-type: square;font-size: 14px;">Risk prediction</i>
+                    <li style="list-style-type: square;font-size: 14px;">Clinical association of genetic findings</i>
+                    <li style="list-style-type: square;font-size: 14px;">Available treatments or suggestions</i>
+                    <li style="list-style-type: square;font-size: 14px;">Data management</i>
+                  </ul>
+                </div>
+
+              </div>
+            </div>
+          </div>
+          <div class="col-lg-1 order-2 order-lg-1 mt-3 mt-lg-0">
+          </div>
+        </div>
+    </section>
+
+
+
+
+
+
+
+    <!-- End Services Section -->
+
+    <!-- ======= Cta Section ======= -->
+    <section id="cta" class="cta" style="margin-top: 0px;">
+      <div class="container">
+        <div class="section-title">
+          <h2>Data Security</h2>
+          <p>UNCOMPROMISED DATA SECURITY</p>
+
+        </div>
+        <div class="row" data-aos="zoom-in">
+          <div class="col-lg-9 text-center text-lg-start">
+            <!--    <h3>DATA SECURITY AND INDUSTRY COMPLIANCE</h3> -->
+            <p>DNA is the most personal source of data. GenomicStar&#39;s data collection, storage, analysis, and
+              interpretation processes are built from the ground up with an unwavering commitment to security
+              and regulatory compliance.
+
+              <br><br>Our platform supports multiple security standards and compliance certifications, including HL-7
+              FHIR, HIPAA, and GDPR. All our services that store patients&#39; data offer the ability to encrypt
+              that data.
+
+              <br><br>In addition, our platform offers data sovereignty by supporting in-country data hosting in
+              accordance with local government compliance specifications.
+            </p>
+          </div>
+          <!--    <div class="col-lg-3 cta-btn-container text-center">
+            <a class="cta-btn align-middle" href="#">Call To Action</a>
+          </div> -->
+        </div>
+
+      </div>
+    </section><!-- End Cta Section -->
+
+    <!-- ======= Portfoio Section ======= -->
+    <!-- End Portfoio Section -->
+
+    <!-- ======= Team Section ======= -->
+    <!-- End Team Section -->
+
+    <!-- ======= Pricing Section ======= -->
+    <!-- End Pricing Section -->
+
+    <!-- ======= Frequently Asked Questions Section ======= -->
+
+
+    <section id="team" class="team " style="margin-top: 0px;background-color: rgb(219, 230, 240);">
+      <div class="container" data-aos="fade-up">
+        <div class="section-title">
+          <h2>Our Team</h2>
+          <!--  <p>Optimized for faster cure</p> -->
+
+        </div>
+
+
+
+
+
+        <div class="row align-items-center">
+          <div class="col-lg-5 order-2 order-lg-1 mt-3 mt-lg-0">
+            <img src="assets/img/team1.png" class="img-fluid" alt="" data-aos="zoom-in">
+          </div>
+          <div class="col-lg-7 order-2 order-lg-1 mt-3 mt-lg-0">
+
+
+
+            <div class="social-links " style="align-items:end;">
+              <h3>Dr. Ravi Ramalingam, Adjunct Consultant Scientist<a
+                  href="https://www.linkedin.com/in/ravi-ramalingam-ph-d-46b34731/" class="linkedin" target="_blank"
+                  style="margin-left: 20px;"><i class="bx bxl-linkedin"></i></a></h3>
+            </div>
+            <p>Ravi is a genomics specialist with over nine years of expertise within the genomics realm. He
+              possesses a Ph.D. in Biomedical Sciences along with a postgraduate qualification in Bioinformatics
+              and Biotechnology. With nearly three years of hands-on involvement as a scientist at a prominent
+              diagnostic enterprise, he has demonstrated proficiency in genomics, bioinformatics, and molecular
+              biology.</p>
+            <p> Dr. Ravi has notably contributed his research findings to esteemed international publications
+              and has collaborated on chapters with global publishers. His interest lies within molecular biology
+              and bioinformatics domain, where he seeks to delve into their applications in clinical diagnostics.
+            </p>
+            <p>He is a person who likes travelling to new places, reading books, and immersing himself in the
+              fascinating world of science-fiction movies.</p>
+
+            <!--   <p><i class="ri-check-double-line"  style="color:#ff4a17"></i> Doctors access this platform for reviewing the reports and submitting their observations. Patients own and manage their own data in this secured platform.</p> -->
+          </div>
+
+
+
+        </div>
+
+
+
+        <div class="row align-items-center" style="margin-top: 80px;">
+          <div class="col-lg-5 order-2 order-lg-1 mt-3 mt-lg-0">
+            <img src="assets/img/team2.png" class="img-fluid" alt="" data-aos="zoom-in">
+          </div>
+          <div class="col-lg-7 order-2 order-lg-1 mt-3 mt-lg-0">
+            <div class="social-links " style="align-items:end;">
+              <h3>Bejoy J. Koshy, Principal Consultant <a href="https://www.linkedin.com/in/bejoy-koshy-a364761b/"
+                  class="linkedin" target="_blank" style="margin-left: 20px;"><i class="bx bxl-linkedin"></i></a></h3>
+            </div>
+            <p>Bejoy is a versatile & an articulate techno-functional leader with 23 years of rich & extensive
+              work experience in delivering largescale strategic technology programs and managing
+              demanding business operations spanning multiple times zones with a particular focus in IT
+              Project Management and Business Operations in the downstream supply chain management and
+              visa services domains. He is an avid team player who leads from the front and empowers his
+              team to realize their best.
+            </p>
+            <p>Bejoy loves trying new things, both in life in general, and at work. Whilst away from work, the
+              self-confessed foodie can be found indulging in road trips with his family.</p>
+
+            <!--   <p><i class="ri-check-double-line"  style="color:#ff4a17"></i> Doctors access this platform for reviewing the reports and submitting their observations. Patients own and manage their own data in this secured platform.</p> -->
+          </div>
+
+
+
+        </div>
+
+
+
+
+
+
+      </div>
+    </section>
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <section id="faq1" class="faq1 section-bg">
+      <div class="container" data-aos="fade-up">
+        <div class="section-title">
+          <h2>FAQ</h2>
+          <!--    <p>Digital, Secured & Agile</p> -->
+
+        </div>
+
+
+        <div class="faq-list icon-box">
+
+          <div class="accordion accordion-flush" id="accordionFlushExample">
+            <div class="accordion-item">
+              <h2 class="accordion-header">
+                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                  data-bs-target="#flush-collapseOne" aria-expanded="false" aria-controls="flush-collapseOne">
+                  What is Genomics?
+                </button>
+              </h2>
+              <div id="flush-collapseOne" class="accordion-collapse collapse" data-bs-parent="#accordionFlushExample">
+                <div class="accordion-body">
+                  <p>Imagine your body is like a book, and each page of the book contains instructions (genes) that
+                    determine how you grow, look, and function. Genomics is like reading and understanding the entire
+                    book to learn about every detail of how your body works and why it is the way it is.</p>
+
+                  <p> It helps scientists and doctors to uncover the secrets hidden in the pages of your genetic book.
+                  </p>
+                </div>
+              </div>
+            </div>
+            <div class="accordion-item">
+              <h2 class="accordion-header">
+                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                  data-bs-target="#flush-collapseTwo" aria-expanded="false" aria-controls="flush-collapseTwo">
+                  What is Genomic testing?
+                </button>
+              </h2>
+              <div id="flush-collapseTwo" class="accordion-collapse collapse" data-bs-parent="#accordionFlushExample">
+                <div class="accordion-body">
+                  <p>Genomic testing is like looking at your body's instruction manual (DNA) to understand your unique
+                    traits and insights into ones genetic make-up.</p>
+
+                  <p>It can reveal information about potential health risks, ancestry, and personalized responses to
+                    medications.</p>
+
+                  <p>Examples of genomic tests include whole-genome sequencing, targeted gene testing, and ancestry DNA
+                    testing.</p>
+                </div>
+              </div>
+            </div>
+            <div class="accordion-item">
+              <h2 class="accordion-header">
+                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                  data-bs-target="#flush-collapseThree" aria-expanded="false" aria-controls="flush-collapseThree">
+                  How is Genomic testing done?
+                </button>
+              </h2>
+              <div id="flush-collapseThree" class="accordion-collapse collapse" data-bs-parent="#accordionFlushExample">
+                <div class="accordion-body">
+                  <p>(1) Sample Collection: You provide a sample containing your DNA, often through a saliva sample,
+                    cheek swab, or blood draw.</p>
+
+                  <p>(2) DNA Extraction: The DNA is extracted from the collected sample in a laboratory.</p>
+
+                  <p>(3) Sequencing: The DNA is then sequenced, where the order of its building blocks (nucleotides) is
+                    determined. </p>
+
+                  <p>(4) Analysis: The sequenced DNA is analysed to identify variations, mutations, and its relevance to
+                    the objective of the test.</p>
+
+                  <p>(5) Results: The final report provides insights to Doctors about the disease, its effective
+                    medications and possible dosage that is unique and tailor-made to that Patient.</P>
+                </div>
+              </div>
+            </div>
+            <div class="accordion-item">
+              <h2 class="accordion-header">
+                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                  data-bs-target="#flush-collapsefour" aria-expanded="false" aria-controls="flush-collapsefour">
+                  What are the benefits of Genomics testing
+                </button>
+              </h2>
+              <div id="flush-collapsefour" class="accordion-collapse collapse" data-bs-parent="#accordionFlushExample">
+                <div class="accordion-body">
+                  <p>Genomics testing facilitates personalized treatment plans by identifying genetic markers,
+                    optimizing drug selection, and enabling targeted interventions for improved disease management. This
+                    greatly helps Doctor in treating patients more effectively.</P>
+                </div>
+              </div>
+            </div>
+            <div class="accordion-item">
+              <h2 class="accordion-header">
+                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                  data-bs-target="#flush-collapsefive" aria-expanded="false" aria-controls="flush-collapsefive">
+                  For which diseases, Genomic testing is most useful?
+                </button>
+              </h2>
+              <div id="flush-collapsefive" class="accordion-collapse collapse" data-bs-parent="#accordionFlushExample">
+                <div class="accordion-body">
+                  <p>Genomic testing is most useful for identifying genetic markers associated with cancer,
+                    cardiovascular diseases, neurological disorders, rare genetic conditions, pharmacogenomics,
+                    reproductive health, monogenic diabetes, autoimmune disorders, and infectious diseases, facilitating
+                    personalized diagnosis, treatment, and risk assessment.</p>
+                </div>
+              </div>
+            </div>
+            <div class="accordion-item">
+              <h2 class="accordion-header">
+                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                  data-bs-target="#flush-collapsesix" aria-expanded="false" aria-controls="flush-collapsesix">
+                  How long will it take for testing results to come?
+                </button>
+              </h2>
+              <div id="flush-collapsesix" class="accordion-collapse collapse" data-bs-parent="#accordionFlushExample">
+                <div class="accordion-body">
+                  <p>The turnaround time vary widely depending on several factors, including the type of test, the
+                    complexity of the analysis, etc. Typically, one can expect results in 3-4 weeks’ time from sample
+                    collection.</p>
+
+                  <p>It's important to check with the specific testing provider for estimated turnaround time for the
+                    particular genomic test you are undergoing.</p>
+                </div>
+              </div>
+            </div>
+            <div class="accordion-item">
+              <h2 class="accordion-header">
+                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                  data-bs-target="#flush-collapseseven" aria-expanded="false" aria-controls="flush-collapseseven">
+                  How much will it cost for Genomic testing?
+                </button>
+              </h2>
+              <div id="flush-collapseseven" class="accordion-collapse collapse" data-bs-parent="#accordionFlushExample">
+                <div class="accordion-body">
+                  <p>The cost of genomic testing vary depending on the type of test, the laboratory or testing facility
+                    chosen.</p>
+
+                  <p>At GenomicStar, in India, an end-to-end Genomic Testing may cost anywhere between INR 10,000 to INR
+                    20,000.</p>
+                </div>
+              </div>
+            </div>
+            <div class="accordion-item">
+              <h2 class="accordion-header">
+                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                  data-bs-target="#flush-collapseeight" aria-expanded="false" aria-controls="flush-collapseeight">
+                  How often do I need to do Genomic testing?
+                </button>
+              </h2>
+              <div id="flush-collapseeight" class="accordion-collapse collapse" data-bs-parent="#accordionFlushExample">
+                <div class="accordion-body">
+                  <p>Genomic testing is not a routine procedure. For diagnostic purposes, it is generally a one-time
+                    event unless new health concerns arise.</p>
+
+                  <p>Similarly, Pharmacogenomic testing, which assesses medication response, may not need frequent
+                    repetition unless specified by the Doctor.</p>
+                </div>
+              </div>
+            </div>
+            <div class="accordion-item">
+              <h2 class="accordion-header">
+                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                  data-bs-target="#flush-collapsenine" aria-expanded="false" aria-controls="flush-collapsenine">
+                  Is Genomic testing really useful?
+                </button>
+              </h2>
+              <div id="flush-collapsenine" class="accordion-collapse collapse" data-bs-parent="#accordionFlushExample">
+                <div class="accordion-body">
+                  <p>Yes, genomic testing is indeed valuable. It offers crucial insights into an individual's genetic
+                    composition, allowing for personalized healthcare strategies. From early disease detection and
+                    tailored treatment plans to assessing health risks and predicting medication responses. Genomic
+                    testing plays a pivotal role in enhancing medical precision and well-being.</p>
+                </div>
+              </div>
+            </div>
+            <div class="accordion-item">
+              <h2 class="accordion-header">
+                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                  data-bs-target="#flush-collapseten" aria-expanded="false" aria-controls="flush-collapseten">
+                  Is my Genomic data Secure?
+                </button>
+              </h2>
+              <div id="flush-collapseten" class="accordion-collapse collapse" data-bs-parent="#accordionFlushExample">
+                <div class="accordion-body">
+                  <p>The security of genomic data is a paramount concern.</p>
+
+                  <p>At GenomicStar, we prioritize the security of genomic data through comprehensive measures. We
+                    employ robust encryption protocols during data transmission and storage, safeguarding against
+                    unauthorized access. Secure servers with restricted access, anonymization techniques, and compliance
+                    with data protection regulations ensure highest standards of security and confidentiality.</p>
+                </div>
+              </div>
+            </div>
+            <div class="accordion-item">
+              <h2 class="accordion-header">
+                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                  data-bs-target="#flush-collapseeleven" aria-expanded="false" aria-controls="flush-collapseeleven">
+                  Will my Insurance Company cover my Genomic testing cost?
+                </button>
+              </h2>
+              <div id="flush-collapseeleven" class="accordion-collapse collapse"
+                data-bs-parent="#accordionFlushExample">
+                <div class="accordion-body">
+                  <p>Yes, some Insurance companies cover costs for Genomic testing in India. However, Insurance cover is
+                    not as common as compared to other medical procedures.</p>
+                </div>
+              </div>
+            </div>
+            <div class="accordion-item">
+              <h2 class="accordion-header">
+                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                  data-bs-target="#flush-collapsetwelve" aria-expanded="false" aria-controls="flush-collapsetwelve">
+                  What are the clauses that I should look for while renewing my Insurance coverage?
+                </button>
+              </h2>
+              <div id="flush-collapsetwelve" class="accordion-collapse collapse"
+                data-bs-parent="#accordionFlushExample">
+                <div class="accordion-body">
+                  <p>When renewing, consider the following aspects:</p>
+
+                  <p>Genomic Testing Coverage: Verify whether the policy explicitly covers genomic testing, and
+                    understand the extent of coverage, including any limitations or exclusions.</p>
+
+                  <p>Preauthorization Requirements: Check if genomic testing requires preauthorization from the
+                    insurance company, and understand the process for obtaining approval.</p>
+
+                  <p>Coverage for Specific Conditions: Assess whether the policy covers genomic testing for specific
+                    medical conditions or if the coverage is broader, encompassing a range of genetic tests.</p>
+
+                  <p>Policy Exclusions: Review any exclusions related to genomic testing, ensuring you are aware of any
+                    conditions or circumstances that may result in non-coverage.</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ======= Contact Section ======= -->
+    <section id="contact" class="contact">
+      <div class="container" data-aos="fade-up">
+        <div class="section-title">
+          <h2>Contact Us</h2>
+          <p>Connect with Us</p>
+        </div>
+        <div class="row mt-1 d-flex justify-content-end" data-aos="fade-right" data-aos-delay="100">
+          <div class="col-lg-5">
+            <div class="info">
+              <div class="address">
+                <i class="bi bi-geo-alt"></i>
+                <h4>Location:</h4>
+                <p>GenomicStar Pvt. Ltd., Chennai, India.</p>
+              </div>
+              <div class="email">
+                <i class="bi bi-envelope"></i>
+                <h4>Email:</h4>
+                <p>info@genomicstar.com</p>
+              </div>
+              <!-- 
+              <div class="phone">
+                <i class="bi bi-phone"></i>
+                <h4>Call:</h4>
+                <p>+999999999</p>
+              </div> -->
+
+            </div>
+          </div>
+          <div class="col-lg-6 mt-5 mt-lg-0" data-aos="fade-left" data-aos-delay="100">
+            <form method="post" role="form" name="contactform" class="php-email-form" onsubmit="submitForm(event);">
+              <div class="row">
+                <div class="col-md-6 form-group">
+                  <input type="text" name="name" class="form-control" id="name" placeholder="Your Name" required>
+                </div>
+                <div class="col-md-6 form-group mt-3 mt-md-0">
+                  <input type="email" class="form-control" name="email" id="email" placeholder="Your Email" required>
+                </div>
+              </div>
+              <div class="form-group mt-3">
+                <input type="text" class="form-control" name="subject" id="subject" placeholder="Subject" required>
+              </div>
+              <div class="form-group mt-3">
+                <textarea class="form-control" name="message" rows="5" placeholder="Message" required></textarea>
+              </div>
+              <div class="my-3">
+                <div class="loading">Loading</div>
+                <div class="error-message">Your message could not able to save. please retry</div>
+                <div class="sent-message">Your message has been sent. Thank you!</div>
+              </div>
+              <div class="text-center"><button type="submit">Send Message</button></div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </section>
+    <div class="container">
+      <div class="modal" id="myRegisterModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+        aria-hidden="true">
+        <div class="modal-dialog">
+          <div class="modal-content">
+            <div class="modal-header">
+              <button type="button" class="close" data-dismiss="modal" id="closeModal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
+            <div class="modal-body">
+              <div class="form-logo text-center">
+                <img src="assets/img/Gnomicstar_logo_Final.png">
+              </div>
+              <form class="register-form" id="registerForm" method="post" role="form" name="registerForm">
+                <div class="form-group mb-4 input-group">
+                 <input type="text" class="phone-input" name="name" placeholder="Enter Your Name" autocomplete="off"
+                  oninput="formatName(this)">
+                </div>
+                <div class="form-group mb-4 input-group">
+                  <input type="tel" class="phone-input" name="phNumber" required
+                    oninput="this.value = this.value.replace(/\D+/g, '')" maxlength="10"
+                    placeholder="Enter phone number" autocomplete="off">
+                  <button id="sendOtpValidate" class="send-button" onclick="generateOtp(event)">Get OTP</button>
+                </div>
+                <div id="loader" class="text-success text-center mb-2" style="display: none;">Loading...</div>
+                <form action="javascript: void(0)" class="otp-form" name="otp-form">
+                  <div class="form-group mb-2 otp-input-fields">
+                    <input type="text" name="otpField_1" oninput="this.value = this.value.replace(/\D+/g, '')" required
+                      class="register-otp-textbox otp__digit otp__field__1" minlength="1" maxlength="1"
+                      autocomplete="off">
+                    <input type="text" name="otpField_2" oninput="this.value = this.value.replace(/\D+/g, '')" required
+                      class="register-otp-textbox otp__digit otp__field__2" minlength="1" maxlength="1"
+                      autocomplete="off">
+                    <input type="text" name="otpField_3" oninput="this.value = this.value.replace(/\D+/g, '')" required
+                      class="register-otp-textbox otp__digit otp__field__3" minlength="1" maxlength="1"
+                      autocomplete="off">
+                    <input type="text" name="otpField_4" oninput="this.value = this.value.replace(/\D+/g, '')" required
+                      class="register-otp-textbox otp__digit otp__field__4" minlength="1" maxlength="1"
+                      autocomplete="off">
+
+                  </div>
+                </form>
+                <div id="errorMessage" class="text-danger text-center mb-2"></div>
+                <div id="successMessage" class="text-success text-center mb-2"></div>
+                <div id="sendOtpButton" class="text-success text-center mb-2"></div>
+                <div id="loader" class="text-success text-center mb-2" style="display: none;">Loading...</div>
+                <button type="submit" class="btn btn-primary btn-sign text-center btn-block mb-4 mt-2"
+                  onclick="verifyOtp(event)">VERIFY</button>
+              </form>
+            </div>
+
+          </div>
+        </div>
+      </div>
+
+      <div class="modal" id="loginModal">
+        <div class="modal-dialog">
+          <div class="modal-content">
+
+            <!-- Modal Header -->
+            <div class="modal-header">
+              <button type="button" class="close" data-dismiss="modal" id="closeLoginModal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
+            <div class="modal-body">
+              <div class="form-logo text-center">
+
+                <img src="assets/img/Gnomicstar_logo_Final.png">
+              </div>
+
+
+              <form class="login-form" method="post" role="form" name="loginForm" id="loginForm">
+                <div class="form-group mb-4 input-group">
+                  <!--  <label for="email">Email address</label> -->
+                  <input type="tel" class="phone-input" name="phNumber"
+                    oninput="this.value = this.value.replace(/\D+/g, '')" maxlength="10"
+                    placeholder="Enter phone number" autocomplete="off">
+                  <button id="loginButtonValidate" class="send-button" onclick="generateLoginOtp(event)">Get
+                    OTP</button>
+                </div>
+                <div id="loader" class="text-success text-center mb-2" style="display: none;">Loading...</div>
+                <form action="javascript: void(0)" class="otp-form" name="otp-form">
+                  <div class="form-group mb-2 otp-input-fields">
+                    <!--   <label for="password">Password</label> -->
+
+                    <input type="text" name="otpField_1" oninput="this.value = this.value.replace(/\D+/g, '')" required
+                      class="login-otp-textbox otp__digit otp__field__1" minlength="1" maxlength="1" autocomplete="off">
+                    <input type="text" name="otpField_2" oninput="this.value = this.value.replace(/\D+/g, '')" required
+                      class="login-otp-textbox  otp__digit otp__field__2" minlength="1" maxlength="1"
+                      autocomplete="off">
+                    <input type="text" name="otpField_3" oninput="this.value = this.value.replace(/\D+/g, '')" required
+                      class="login-otp-textbox otp__digit otp__field__3" minlength="1" maxlength="1" autocomplete="off">
+                    <input type="text" name="otpField_4" oninput="this.value = this.value.replace(/\D+/g, '')" required
+                      class="login-otp-textbox otp__digit otp__field__4" minlength="1" maxlength="1" autocomplete="off">
+
+                  </div>
+                </form>
+                <div id="errorOtp" class="text-danger text-center mb-2"></div>
+                <div id="otpMessage" class="text-success text-center mb-2"></div>
+                <div id="loginOtpButton" class="text-success text-center mb-2"></div>
+                <div id="loaderLogin" class="text-success text-center mb-2" style="display: none;">Loading...</div>
+
+                <button type="submit" class="btn btn-primary btn-sign text-center btn-block mb-4"
+                  onclick="verifyLoginOtp(event)">VERIFY</button>
+                <p class="text-center">Don't have an account? <a href="#" data-dismiss="modal" data-toggle="modal"
+                    data-target="#myRegisterModal" onclick="clearForm()">Sign Up Now</a></p>
+
+
+                <span class="or">or</span>
+                <br>
+                <p class="text-center">Connect with Social Media</p>
+                <div class="sm-icons text-center">
+                  <a href="#" onclick="signInWithGoogle()">
+                    <img src="assets/img/Google.png">
+                  </a>
+
+                  <a href="#" onclick="signInWithFacebook()"><img src="assets/img/Facebook.png"></a>
+                  <a href="#" onclick="signInWithLinkedIn()"><img src="assets/img/linked-in.png"></a>
+                  <a href="#" onclick="signInWithTwitter()"><img src="assets/img/Twitter.png"></a>
+                </div>
+              </form>
+            </div>
+
+          </div>
+        </div>
+      </div>
+
+
+      <!-- <div class="modal fade" id="signUpModal" tabindex="-1" role="dialog" aria-labelledby="signUpModalLabel" aria-hidden="true">
+        <div class="modal-dialog ph-modal" role="document">
+          <div class="modal-content">
+            <div class="modal-header">
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
+            <div class="modal-body">
+              <div class="form-logo text-center">
+                <p><b>Kindly call us at this number and we will assist you.</b></p>
+                
+              </div>
+
+               <h1 class="ph-number text-center">+91 979 0505 209</h1>
+            </div>
+          </div>
+        </div>
+      </div> -->
+
+      <!-- varify chages -->
+
+      <div class="modal fade" id="verifyModal" tabindex="-1" role="dialog" aria-labelledby="verifyModalLabel"
+        aria-hidden="true">
+        <div class="modal-dialog ph-modal" role="document">
+          <div class="modal-content">
+            <div class="modal-header"></div>
+            <div class="form-call-logo text-center d-flex justify-content-center align-items-center">
+              <img src="assets\img\tick-suceess.jpg" alt="Avatar" class="avatar">
+            </div>
+            <button type="button" class="close" data-dismiss="modal" id="toggle" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+            <div class="modal-body">
+              <div class="row">
+                <div class="col-lg-12 col-md-12 col-sm-12">
+                  <h1 class="ph-number text-center">Success</h1>
+                </div>
+                <div class="col-lg-2"></div>
+                <div class="col-lg-8 col-md-8 col-sm-12 text-center">
+                  <div class="text-center">
+                    <p id="successMsg">Our customer support staff will call you shortly</p>
+                  </div>
+                </div>
+                <div class=" col-2"></div>
+                <div class=" col-2"></div>
+                <div class=" col-8">
+                  <button type="button" class="btn-color col-12 text-center" id="toggle" data-dismiss="modal"
+                    aria-label="Close" onclick="closeSuccessModal()">Ok</button>
+                </div>
+                <div class=" col-2"></div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+
+      <!-- contact changes -->
+      <div class="modal fade" id="signUpModal" tabindex="-1" role="dialog" aria-labelledby="signUpModalLabel"
+        aria-hidden="true">
+        <div class="modal-dialog ph-modal" role="document">
+          <div class="modal-content">
+            <div class="modal-header">
+            </div>
+            <div class="form-call-logo text-center d-flex justify-content-center align-items-center">
+              <img src="assets\img\call-logo.jpg" alt="Avatar" class="avatar">
+            </div>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+
+            <div class="modal-body">
+              <div class="row">
+                <div class="col-lg-12 col-md-12 col-sm-12">
+                  <div class="form-logo text-center">
+                    <p>Call us at</p>
+                  </div>
+                </div>
+                <div class="col-lg-12 col-md-12 col-sm-12">
+                  <h1 class="ph-number text-center">(+91) 979 0505 209</h1>
+                </div>
+                <div class="col-lg-12 col-md-12 col-sm-12">
+                  <div class="text-center">
+                    <p>and we will assist you.</p>
+                  </div>
+                </div>
+                <div class="col-2"></div>
+                <div class="col-8">
+                  <button type="button" id="callButton" class="btn-color col-12 text-center" data-dismiss="modal"
+                    aria-label="Close">Ok</button>
+                </div>
+                <div class=" col-2"></div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+
+
+    </div>
+  </main><!-- End #main -->
+
+  <!-- ======= Footer ======= -->
+  <footer id="footer">
+
+    <!-- <div class="footer-newsletter">
+      <div class="container">
+        <div class="row">
+          <div class="col-lg-6">
+            <h4>Our Newsletter</h4>
+        
+          </div>
+          <div class="col-lg-6">
+            <form action="" method="post">
+              <input type="email" name="email"><input type="submit" value="Subscribe">
+            </form>
+          </div>
+        </div>
+      </div>
+    </div> -->
+
+    <div class="footer-top">
+      <div class="container">
+        <div class="row">
+
+          <div class="col-lg-3 col-md-6 footer-links">
+            <h4>Useful Links</h4>
+            <ul>
+              <li><i class="bx bx-chevron-right"></i> <a href="#">Home</a></li>
+              <li><i class="bx bx-chevron-right"></i> <a href="#icon-boxes">About us</a></li>
+              <li><i class="bx bx-chevron-right"></i> <a href="#solution">Our Platform</a></li>
+              <li><i class="bx bx-chevron-right"></i> <a href="#">Terms of service</a></li>
+              <li><i class="bx bx-chevron-right"></i> <a href="#">Privacy policy</a></li>
+            </ul>
+          </div>
+
+          <!--   <div class="col-lg-3 col-md-6 footer-links">
+            <h4>Our Services</h4>
+            <ul>
+              <li><i class="bx bx-chevron-right"></i> <a href="#">Genomic Testing life-cycle management</a></li>
+              <li><i class="bx bx-chevron-right"></i> <a href="#">Web Development</a></li>
+              <li><i class="bx bx-chevron-right"></i> <a href="#">Product Management</a></li>
+              <li><i class="bx bx-chevron-right"></i> <a href="#">Marketing</a></li>
+              <li><i class="bx bx-chevron-right"></i> <a href="#">Graphic Design</a></li>
+            </ul>
+          </div> -->
+
+          <div class="col-lg-3 col-md-6 footer-contact">
+            <h4>Contact Us</h4>
+            <p>
+              GenomicStar Pvt. Ltd., Chennai, India. <br>
+              <!--    <br>
+              <br><br> -->
+              <!--    <strong>Phone:</strong> +99999999<br> -->
+              <strong>Email:</strong> info@genomicstar.com<br>
+            </p>
+
+          </div>
+
+          <div class="col-lg-3 col-md-6 footer-info">
+            <h3>About GenomicStar</h3>
+            <p>GenomicStar is a Precision Medicine Platform that helps doctors solve the problem of
+              translating complex genomic data into actionable clinical insights for better and faster
+              treatment of patients.</p>
+            <!--   <div class="social-links mt-3">
+              <a href="#" class="twitter"><i class="bx bxl-twitter"></i></a>
+              <a href="#" class="facebook"><i class="bx bxl-facebook"></i></a>
+              <a href="#" class="instagram"><i class="bx bxl-instagram"></i></a>
+              <a href="#" class="google-plus"><i class="bx bxl-skype"></i></a>
+              <a href="#" class="linkedin"><i class="bx bxl-linkedin"></i></a>
+            </div> -->
+          </div>
+
+        </div>
+      </div>
+    </div>
+
+    <div class="container">
+      <div class="copyright">
+        &copy; Copyright <strong><span>GENOMICSTAR</span></strong>. All Rights Reserved
+      </div>
+      <div class="credits">
+        <!-- All the links in the footer should remain intact. -->
+        <!-- You can delete the links only if you purchased the pro version. -->
+        <!-- Licensing information: https://bootstrapmade.com/license/ -->
+        <!-- Purchase the pro version with working PHP/AJAX contact form: https://bootstrapmade.com/anyar-free-multipurpose-one-page-bootstrap-theme/ -->
+        <!--   Designed by <a href="#">DEEM360</a> -->
+      </div>
+    </div>
+  </footer><!-- End Footer -->
+
+
+  <!-- 
+  <div id="preloader"></div> -->
+  <a href="#" class="back-to-top d-flex align-items-center justify-content-center"><i
+      class="bi bi-arrow-up-short"></i></a>
+
+  <!-- Vendor JS Files -->
+  <script src="https://cdn.jsdelivr.net/npm/jquery@3.7.1/dist/jquery.slim.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="assets/vendor/aos/aos.js"></script>
+  <script src="assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+  <script src="assets/vendor/glightbox/js/glightbox.min.js"></script>
+  <script src="assets/vendor/isotope-layout/isotope.pkgd.min.js"></script>
+  <script src="assets/vendor/swiper/swiper-bundle.min.js"></script>
+
+
+  <!--
+  <script src="assets/vendor/php-email-form/validate.js"></script>-->
+
+  <!-- Template Main JS File -->
+  <script src="assets/js/main.js"></script>
+
+  <!-- website login script -->
+  <script type="text/javascript">
+
+    var countdownInterval;
+    var POST_LOGIN_URL = "https://api.pms.genomicstar.com/api/user/login";
+    var VERIFY_OTP = "https://api.pms.genomicstar.com/api/user/otp/save";
+
+
+
+
+    function addFocus(otpClass) {
+      document.addEventListener("DOMContentLoaded", function () {
+        var textboxes = document.querySelectorAll("." + otpClass);
+
+        for (var i = 0; i < textboxes.length; i++) {
+          textboxes[i].addEventListener("input", function () {
+            if (this.value.length === 1) {
+              var nextIndex = Array.from(textboxes).indexOf(this) + 1;
+              if (nextIndex < textboxes.length) {
+                textboxes[nextIndex].focus();
+              }
+            }
+          });
+        }
+      });
+    }
+
+
+    addFocus('login-otp-textbox')
+    addFocus('register-otp-textbox')
+
+    var loginCounter = 0;
+
+    function generateLoginOtp(event) {
+      event.preventDefault();
+      if (document.forms["loginForm"]["phNumber"].value == "") {
+        document.getElementById('errorOtp').innerText = 'Please enter phone number.';
+        return false;
+      } else {
+        document.getElementById('errorOtp').innerText = '';
+      }
+
+
+      document.getElementById('loaderLogin').style.display = 'block';
+      event.preventDefault();
+      startLoginCountdownTimer();
+      var params = {
+        type: 'login',
+        number: document.forms["loginForm"]["phNumber"].value
+      };
+      const http = new XMLHttpRequest();
+      http.open('POST', POST_LOGIN_URL);
+      http.setRequestHeader('Content-type', 'application/json');
+      http.onreadystatechange = function () {
+        if (http.status === 201) {
+          document.getElementById('loaderLogin').style.display = 'none';
+          document.getElementById('otpMessage').innerText = 'OTP Sent Successfully.';
+          document.getElementById('errorOtp').innerText = '';
+        } else if (http.status === 409) {
+          document.getElementById('loaderLogin').style.display = 'none';
+          document.getElementById('otpMessage').innerText = '';
+          document.getElementById('errorOtp').innerText = 'User Not Registered. Please Sign Up.';
+          document.getElementById('loginOtpButton').innerText = ``;
+          loginCounter = -1;
+        } else {
+          document.getElementById('loaderLogin').style.display = 'none';
+        }
+      };
+      document.getElementById('loaderLogin').style.display = 'none';
+      document.getElementById('otpMessage').innerText = '';
+      document.getElementById('errorOtp').innerText = '';
+      http.send(JSON.stringify(params));
+    }
+
+
+
+    function startLoginCountdown(seconds) {
+      loginCounter = seconds;
+      const sendOtpButton = document.getElementById('loginOtpButton');
+      const loginInterval = setInterval(() => {
+        sendOtpButton.innerText = `Retry in ${loginCounter} sec`;
+        loginCounter--;
+
+        if (loginCounter < 0) {
+          clearInterval(loginInterval);
+          sendOtpButton.innerText = '';
+          loginButtonValidate.disabled = false;
+        }
+      }, 1000);
+    }
+
+    function startLoginCountdownTimer() {
+      const sendOtpButton = document.getElementById('loginOtpButton');
+      loginButtonValidate.disabled = true;
+      sendOtpButton.innerText = 'Retry in 30 sec';
+      startLoginCountdown(29);
+
+    }
+
+
+
+    function verifyLoginOtp(event) {
+      document.getElementById('loaderLogin').style.display = 'block';
+      event.preventDefault();
+
+      var form = document.getElementById('loginForm')
+
+      if (validateForm(form)) {
+        var params = {
+          type: 'login',
+          number: document.forms["loginForm"]["phNumber"].value,
+          otp: parseInt(document.forms["loginForm"]["otpField_1"].value + document.forms["loginForm"]["otpField_2"].value + document.forms["loginForm"]["otpField_3"].value + document.forms["loginForm"]["otpField_4"].value),
+        };
+        const http = new XMLHttpRequest();
+        http.open('POST', VERIFY_OTP);
+        http.setRequestHeader('Content-type', 'application/json');
+        http.onreadystatechange = function () {
+          if (http.status === 201) {
+            console.log('response 201');
+            document.getElementById('loaderLogin').style.display = 'none';
+            var link = document.getElementById('closeLoginModal');
+            link.click();
+            clearLoginForm();
+            $('#verifyModal').modal('show');
+          } else {
+            console.log(http.responseText);
+            document.getElementById('loaderLogin').style.display = 'none';
+            document.getElementById('errorOtp').innerText = 'Wrong OTP. Try again.';
+            document.getElementById('otpMessage').innerText = '';
+            document.getElementById('loginOtpButton').innerText = ``;
+          }
+        };
+        document.getElementById('errorOtp').innerText = '';
+        document.getElementById('otpMessage').innerText = '';
+        document.getElementById('loginOtpButton').innerText = ``;
+
+        http.send(JSON.stringify(params));
+
+      } else {
+        document.getElementById('loaderLogin').style.display = 'none';
+        document.getElementById('errorOtp').innerText = 'Please enter values for all the fields.';
+        document.getElementById('otpMessage').innerText = '';
+        document.getElementById('loginOtpButton').innerText = ``;
+      }
+    }
+
+
+    function clearLoginForm() {
+      document.getElementById('loaderLogin').style.display = 'none';
+      document.getElementById('otpMessage').innerText = '';
+      document.getElementById('loginOtpButton').innerText = ``;
+      document.getElementById('errorOtp').innerText = '';
+      document.forms["loginForm"]["phNumber"].value = '';
+      loginCounter=-1
+      for (let i = 1; i <= 4; i++) {
+        document.forms["loginForm"]["otpField_" + i].value = '';
+      }
+
+      clearInterval(countdownInterval);
+
+    }
+
+
+  </script>
+
+
+  <!-- website Register script -->
+  <script type="text/javascript">
+
+
+    var POST_URL = "https://api.pms.genomicstar.com/api/user/otp";
+    var VERIFY_OTP = "https://api.pms.genomicstar.com/api/user/otp/save";
+
+    document.addEventListener('DOMContentLoaded', function () {
+      const callButton = document.getElementById('callButton');
+
+      function isMobile() {
+        return /Mobi|Android/i.test(navigator.userAgent);
+      }
+
+      if (isMobile()) {
+        callButton.textContent = 'Call';
+        callButton.addEventListener('click', function () {
+          window.location.href = 'tel:+919790505209';
+        });
+      } else {
+        callButton.textContent = 'OK';
+        callButton.addEventListener('click', function () {
+
+          var link = document.getElementById('signUpModal');
+          link.click();
+
+        });
+      }
+    });
+
+    var registerCounter = 0;
+
+
+    function generateOtp(event) {
+
+      event.preventDefault();
+      if (document.forms["registerForm"]["name"].value == "") {
+        document.getElementById('errorMessage').innerText = 'Please enter name.';
+        return false;
+      } else if (document.forms["registerForm"]["phNumber"].value == "") {
+        document.getElementById('errorMessage').innerText = 'Please enter phone number.';
+        return false;
+      } else {
+        document.getElementById('errorMessage').innerText = '';
+      }
+
+
+
+      document.getElementById('loader').style.display = 'block';
+      event.preventDefault()
+      startCountdownTimer()
+      var params = {
+        type: 'register',
+        name: document.forms["registerForm"]["name"].value,
+        number: document.forms["registerForm"]["phNumber"].value
+      };
+      const http = new XMLHttpRequest();
+      http.open('POST', POST_URL);
+      http.setRequestHeader('Content-type', 'application/json');
+      http.onreadystatechange = function () {
+        if (http.status === 201) {
+          console.log(http.responseText);
+          document.getElementById('loader').style.display = 'none';
+          document.getElementById('successMessage').innerText = 'OTP Sent Successfully.';
+          document.getElementById('errorMessage').innerText = '';
+        } else if (http.status === 409) {
+          console.log('409 sucess')
+          document.getElementById('loader').style.display = 'none';
+          document.getElementById('errorMessage').innerText = 'User Already Registered. Please Login.';
+          document.getElementById('successMessage').innerText = '';
+          document.getElementById('sendOtpButton').innerText = ``;
+          registerCounter = -1;
+        }
+        else {
+          console.log(http.responseText);
+          document.getElementById('loader').style.display = 'none';
+        }
+      };
+      http.send(JSON.stringify(params));
+    }
+
+
+
+    function startCountdown(seconds) {
+      registerCounter = seconds;
+      const sendOtpButton = document.getElementById('sendOtpButton');
+      const registerInterval = setInterval(() => {
+
+        registerCounter--;
+
+        if (registerCounter < 0) {
+          clearInterval(registerInterval);
+          sendOtpButton.innerText = '';
+          sendOtpValidate.disabled = false;
+        } else {
+          sendOtpButton.innerText = `Retry in ${registerCounter} sec`;
+        }
+      }, 1000);
+    }
+
+    function startCountdownTimer() {
+      const sendOtpButton = document.getElementById('sendOtpButton');
+      sendOtpValidate.disabled = true;
+      sendOtpButton.innerText = 'Retry in 30 sec';
+      startCountdown(29);
+
+    }
+
+    function verifyOtp(event) {
+      document.getElementById('loader').style.display = 'block';
+      event.preventDefault()
+
+      var form = document.getElementById('registerForm')
+
+      if (validateForm(form)) {
+        var params = {
+          type: 'register',
+          number: document.forms["registerForm"]["phNumber"].value,
+          otp: parseInt(document.forms["registerForm"]["otpField_1"].value + document.forms["registerForm"]["otpField_2"].value + document.forms["registerForm"]["otpField_3"].value + document.forms["registerForm"]["otpField_4"].value),
+        };
+        const http = new XMLHttpRequest();
+
+        http.open('POST', VERIFY_OTP);
+        http.setRequestHeader('Content-type', 'application/json');
+        http.onreadystatechange = function () {
+
+          if (http.status === 201) {
+            console.log('response 201');
+            var link = document.getElementById('closeModal');
+            link.click();
+            $('#verifyModal').modal('show');
+            this.clearForm();
+          }
+          else {
+            document.getElementById('loader').style.display = 'none';
+            document.getElementById('errorMessage').innerText = 'Wrong OTP. Try again.';
+            document.getElementById('successMessage').innerText = '';
+            document.getElementById('sendOtpButton').innerText = ``;
+
+          }
+        };
+        http.send(JSON.stringify(params));
+
+
+      } else {
+        document.getElementById('loader').style.display = 'none';
+        document.getElementById('errorMessage').innerText = 'Please enter values for all the fields.';
+        document.getElementById('successMessage').innerText = '';
+        document.getElementById('sendOtpButton').innerText = ``;
+
+      }
+
+
+
+    }
+
+    function validateForm(form) {
+      var inputs = form.querySelectorAll("input[required]");
+      var isValid = true;
+
+      inputs.forEach(function (input) {
+        if (!input.value.trim()) {
+          isValid = false;
+        }
+      });
+
+      return isValid;
+    }
+
+    function clearForm() {
+      document.getElementById('loader').style.display = 'none';
+      document.getElementById('successMessage').innerText = '';
+      document.getElementById('errorMessage').innerText = '';
+      document.getElementById('sendOtpButton').innerText = ``;
+      document.forms["registerForm"]["name"].value = '';
+      document.forms["registerForm"]["phNumber"].value = '';
+      for (let i = 1; i <= 4; i++) {
+        document.forms["registerForm"]["otpField_" + i].value = '';
+      }
+    }
+
+  </script>
+
+  <script type="text/javascript">
+    function closeSuccessModal() {
+      this.clearForm();
+      $('#verifyModal').modal('hide');
+    }
+
+
+
+  </script>
+
+  <script>
+    function formatName(inputElement) {
+      // Remove non-alphabetic characters and split the string into words
+      let words = inputElement.value.replace(/[^A-Za-z\s]/g, '').split(' ');
+
+      // Capitalize the first letter of each word and make the rest lowercase
+      for (let i = 0; i < words.length; i++) {
+        if (words[i].length > 0) {
+          words[i] = words[i].charAt(0).toUpperCase() + words[i].slice(1).toLowerCase();
+        }
+      }
+
+      // Join the words back into a single string and update the input value
+      inputElement.value = words.join(' ');
+    }
+  </script>
+
+
+
+
+
+</body>
+
+</html>
